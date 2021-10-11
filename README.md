@@ -62,3 +62,5 @@ Mr. Quiz is a quiz application where one can choose category along with the diff
  <img  width="100%"  height="100%"  src="./screenshots/answers.png"/>
 
 ## Website Link
+
+`Website Link:` https://mr-quiz.netlify.app/
