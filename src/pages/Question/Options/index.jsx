@@ -2,21 +2,20 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const OptionsWrapper = styled.div`
-    div{
+    div {
         font-weight: bold;
         font-size: 20px;
         background-color: #4faadf;
 
         box-shadow: 13px 13px 26px #aaaaac, -13px -13px 26px #ffffff;
-        
+
         padding: 10px 0;
-        margin: 20px 0; 
-        &:hover{
+        margin: 20px 0;
+        &:hover {
             cursor: pointer;
             background-color: #c4d65b;
         }
     }
-    
 `;
 export default function Options({
     correctAnswer,
@@ -38,7 +37,7 @@ export default function Options({
         <OptionsWrapper>
             {options.length > 0 &&
                 options.map((option, index) => (
-                    <div 
+                    <div
                         key={index}
                         onClick={(e) => {
                             handleNextQuestion();

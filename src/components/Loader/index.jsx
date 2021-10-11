@@ -1,17 +1,25 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import styled from "./Loader.module.css";
+import styles from "./Loader.module.css";
 
 export default function Loader() {
     const loader = useSelector((state) => state.LoaderReducer);
-    console.log(loader);
+
     return (
         <>
-            {loader &&
+            {loader && (
                 <div>
-                    <h1>Loading...</h1>
+                    <h1 className={styles.loader}>
+                        <span>L</span>
+                        <span>O</span>
+                        <span>A</span>
+                        <span>D</span>
+                        <span>I</span>
+                        <span>N</span>
+                        <span>G</span>
+                    </h1>
                 </div>
-            }
+            )}
         </>
     );
 }

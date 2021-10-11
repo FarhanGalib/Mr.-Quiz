@@ -8,7 +8,6 @@ export const setLoader = (value) => ({
     payload: value,
 });
 
-
 //category setter
 export const setCategory = (category) => ({
     type: actionTypes.SET_CATEGORY_VALUE,
@@ -21,14 +20,28 @@ export const setDifficulty = (difficulty) => ({
     payload: difficulty,
 });
 
-
-
 //questionList setter
 export const setQuestionList = (questions) => ({
     type: actionTypes.SET_QUESTION_LIST,
     payload: questions,
+});
+
+//set Final Result
+export const setFinalResult = (finalResult) => ({
+    type: actionTypes.SET_FINAL_RESULT,
+    payload: finalResult,
+});
+
+//submittedAnswers
+export const setSubmittedAnswers = (submittedAnswer) => ({
+    type: actionTypes.SET_SUBMITTED_ANSWERS,
+    payload: submittedAnswer,
 })
 
+//resetSubmittedAnswers
+export const resetSubmittedAnswers = () => ({
+    type: actionTypes.RESET_SUBMITTED_ANSWERS,
+})
 
 //fetch questions
 export const fetchQuestions = () => {
@@ -40,6 +53,5 @@ export const fetchQuestions = () => {
         );
         dispatch(setLoader(false));
         dispatch(setQuestionList(data.results));
-        
     };
 };

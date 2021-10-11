@@ -4,6 +4,7 @@ import Loader from "./components/Loader";
 import Page404 from "./pages/404";
 import Home from "./pages/Home";
 import Question from "./pages/Question";
+import Result from "./pages/Result";
 
 function App() {
     return (
@@ -20,6 +21,9 @@ function App() {
                         </Route>
                         <Route exact path="/quiz">
                             <Question />
+                        </Route>
+                        <Route exact path="/result">
+                            <Result />
                         </Route>
                         <Route path="*">
                             <Page404 />
