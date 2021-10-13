@@ -1,8 +1,14 @@
+import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import styled from "styled-components";
-import { setFinalResult, setSubmittedAnswers } from "../../store/actions";
+import {
+    setCategory,
+    setDifficulty,
+    setFinalResult,
+    setSubmittedAnswers,
+} from "../../store/actions";
 import Options from "./Options";
 
 const QuestionWrapper = styled.div`
@@ -20,12 +26,20 @@ const QuestionWrapper = styled.div`
         padding: 10px 50px;
     }
 `;
+const QuestionNotReadyWrapper = styled.div`
+    text-align: center;
+    color: #295680;
+    button {
+        background-color: #113f69;
+        margin-top: 50px;
+    }
+`;
 
 export default function Question() {
     const questionList = useSelector((state) => state.questionReducer);
+    const loader = useSelector((state) => state.LoaderReducer);
     const [questionResourceMaterial, setQuestionResourceMaterial] = useState();
     const [index, setIndex] = useState(-1);
-    const [options, setOptions] = useState([]);
     const [result, setResult] = useState(0);
     const history = useHistory();
     const dispatch = useDispatch();
@@ -58,7 +72,11 @@ export default function Question() {
             }
         }
     };
-
+    const handleTryAgain = () => {
+        dispatch(setCategory(""));
+        dispatch(setDifficulty(""));
+        history.push("/");
+    };
     return (
         <>
             {questionResourceMaterial && (
@@ -90,6 +108,21 @@ export default function Question() {
                         Next
                     </Button> */}
                 </QuestionWrapper>
+            )}
+            {!loader && questionList.length === 0 && (
+                <QuestionNotReadyWrapper>
+                    <h1>Question is not ready yet. </h1>
+                    <h3>
+                        Please try with another category or difficulty level.
+                    </h3>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleTryAgain}
+                    >
+                        Try Again
+                    </Button>
+                </QuestionNotReadyWrapper>
             )}
         </>
     );
